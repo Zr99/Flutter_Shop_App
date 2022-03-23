@@ -5,7 +5,7 @@ class ProductItem extends StatelessWidget {
   final String? title;
   final String? imageURL;
 
-  ProductItem({this.id, this.title, this.imageURL});
+  ProductItem(this.id, this.title, this.imageURL);
 
   @override
   Widget build(BuildContext context) {
