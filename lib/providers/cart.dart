@@ -1,4 +1,7 @@
 import 'package:flutter/foundation.dart';
+import 'package:provider/provider.dart';
+
+import '../providers/cart.dart';
 
 class CartItem {
   final String id;
@@ -21,7 +24,6 @@ class Cart with ChangeNotifier {
   }
 
   int get itemCount {
-    
     return _items.length;
 
     //return the total amount of products in the cart just each product category
@@ -61,6 +63,11 @@ class Cart with ChangeNotifier {
             title: title),
       );
     }
+    notifyListeners();
+  }
+
+  void removeItem(String productId) {
+    _items.remove(productId);
     notifyListeners();
   }
 }
