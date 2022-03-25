@@ -3,16 +3,19 @@ import 'package:provider/provider.dart';
 
 import '../screens/product_detail_screen.dart';
 import '../providers/product.dart';
+import '../providers/cart.dart';
 
 class ProductItem extends StatelessWidget {
   // final String? id;
   // final String? title;
   // final String? imageURL;
   // ProductItem(this.id, this.title, this.imageURL);
-  
+
   @override
   Widget build(BuildContext context) {
-    final product = Provider.of<Product>(context);
+    final product = Provider.of<Product>(context, listen: false);
+    final cart = Provider.of<Cart>(context, listen: false);
+
     return ClipRRect(
       borderRadius: BorderRadius.circular(10),
       child: GridTile(
@@ -30,22 +33,28 @@ class ProductItem extends StatelessWidget {
         ),
         footer: GridTileBar(
           backgroundColor: Colors.black87,
-          leading: IconButton(
-            color: Theme.of(context).accentColor,
-            icon: Icon(
-                product.isFavorite! ? Icons.favorite : Icons.favorite_border),
-            onPressed: () {
-              product.toggleFavoriteStatus();
-            },
+          leading: Consumer <Product>(
+            builder: (ctx, product, _) =>
+              IconButton(
+                color: Theme.of(context).accentColor,
+                icon: Icon(
+                    product.isFavorite! ? Icons.favorite : Icons.favorite_border),
+                onPressed: () {
+                  product.toggleFavoriteStatus();            
+                },
+              ),
+            
           ),
           title: Text(
-            product.title!,
+            product.title,
             textAlign: TextAlign.center,
           ),
           trailing: IconButton(
             color: Theme.of(context).accentColor,
             icon: Icon(Icons.shopping_cart),
-            onPressed: () {},
+            onPressed: () {
+              cart.addItem(product.id, product.price, product.title);
+            },
           ),
         ),
       ),

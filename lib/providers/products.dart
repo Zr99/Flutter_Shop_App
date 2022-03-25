@@ -17,7 +17,8 @@ class Products with ChangeNotifier {
       description: 'A nice pair of trousers.',
       price: 59.99,
       imageURL:
-          'https://upload.wikimedia.org/wikipedia/commons/thumb/e/e8/Trousers%2C_dress_%28AM_1960.022-8%29.jpg/512px-Trousers%2C_dress_%28AM_1960.022-8%29.jpg',
+          'https://cdn.pixabay.com/photo/2017/08/27/05/33/trousers-2685231_1280.jpg',
+          
     ),
     Product(
       id: 'p3',
@@ -33,7 +34,7 @@ class Products with ChangeNotifier {
       description: 'Prepare any meal you want.',
       price: 49.99,
       imageURL:
-          'https://upload.wikimedia.org/wikipedia/commons/thumb/1/14/Cast-Iron-Pan.jpg/1024px-Cast-Iron-Pan.jpg',
+          'https://cdn.pixabay.com/photo/2013/07/12/12/53/cooking-pot-146459_1280.png',
     ),
   ];
 
